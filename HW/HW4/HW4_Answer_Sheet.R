@@ -98,3 +98,4 @@ for (sample_size in c(10, 500)) {
 #     sample_size = 10,
 #     dgp = dgp_list[[1]], moment_func = moment_func_list[[1]]
 # )
+
