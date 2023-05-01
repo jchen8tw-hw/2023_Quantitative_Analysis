@@ -157,7 +157,7 @@ $$
 
 ### (b)
 
-if $\bm{X}$ contains intercept and let $\tilde{\theta}$ be the solution such that $\nabla L_n(\theta) = 0$, then the above gradient could be written as:
+if $\bm{X}$ contains intercept and let $\tilde{\theta}$ be the solution such that $\nabla L_n(\tilde{\theta}) = 0$, then the above gradient could be written as:
 
 $$
 \sum_{i=1}^n[y_i-G(x_i\tilde{\theta})]
