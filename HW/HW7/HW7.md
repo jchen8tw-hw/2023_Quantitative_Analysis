@@ -103,8 +103,6 @@ $$
 \phi(x_i'\theta)x_i=0
 $$
 
-
-
 For the logit model, the NLS estimator is given by solving the following F.O.C:
 
 $$
@@ -119,6 +117,8 @@ $$
 $$
 
 ## 3.
+
+### (a)
 
 The pdf of Bernoulli distribution is 
 
@@ -146,17 +146,34 @@ and $\nabla L_n(\theta)$ is defined by:
 $$
 \nabla L_n(\theta) = 
 \begin{bmatrix}
+\frac{\partial L_n(\theta)}{\partial\theta_0} \\
 \frac{\partial L_n(\theta)}{\partial\theta_1} \\
-\frac{\partial L_n(\theta)}{\partial\theta_2} \\
 \vdots \\
 \frac{\partial L_n(\theta)}{\partial\theta_n} 
 \end{bmatrix} \\
 = 
-\begin{bmatrix}
-
-\end{bmatrix}
+\sum_{i=1}^n[y_i-G(x_i\theta)]x_i
 $$
 
+### (b)
 
+if $\bm{X}$ contains intercept and let $\tilde{\theta}$ be the solution such that $\nabla L_n(\theta) = 0$, then the above gradient could be written as:
 
+$$
+\sum_{i=1}^n[y_i-G(x_i\tilde{\theta})]
+\begin{bmatrix}
+1 \\
+x_{i,1} \\
+x_{i,2} \\
+\vdots 
+\end{bmatrix} = \bm{0} \\
+\implies \sum_{i=1}^n\begin{bmatrix}
+y_i - G(x_i'\tilde{\theta}) \\
+(y_i- G(x_i'\tilde{\theta}))x_{i,1} \\
+(y_i- G(x_i'\tilde{\theta}))x_{i,2} \\
+\vdots 
+\end{bmatrix} = \bm{0} \\
+\implies \sum_{i=1}^n y_i = \sum_{i=1}^nG(x_i'\theta)
+$$
 
+from the first row of the matrix equality.
