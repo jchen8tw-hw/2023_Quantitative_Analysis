@@ -20,7 +20,7 @@ Lambda_4 = 0
 
 
 for (r in 1:R) {
-  
+
   # generate dataset X
   X = matrix(nrow = n, ncol = 50)
   for (j in 1:50) {
@@ -44,49 +44,49 @@ for (r in 1:R) {
 
   # DGP 1 (2 signal variables)
   # Model 1: 25 regressors
-  
+
   ridge.fit_1 = glmnet(X[,1:25],y_DGP1, alpha = 0, lambda = grid)
   Result_ridge_1 = Result_ridge_1 + (1/R)*coef(ridge.fit_1)[2:26,]
-  
-  ridge.kfold_1 = cv.glmnet(X[,1:25],y_DGP1,alpha=0, nfolds=10, lambda = grid)  
+
+  ridge.kfold_1 = cv.glmnet(X[,1:25],y_DGP1,alpha=0, nfolds=10, lambda = grid)
   best.s1 = ridge.kfold_1$lambda.min
   Lambda_1 = Lambda_1 + (1/R)*best.s1
-  
+
   # DGP 2 (20 signal variables)
   # Model 1: 25 regressors
-  
+
   ridge.fit_2 = glmnet(X[,1:25],y_DGP2, alpha = 0, lambda = grid)
   Result_ridge_2 = Result_ridge_2 + (1/R)*coef(ridge.fit_2)[2:26,]
-  
-  ridge.kfold_2 = cv.glmnet(X[,1:25],y_DGP2,alpha=0, nfolds=10, lambda = grid)  
+
+  ridge.kfold_2 = cv.glmnet(X[,1:25],y_DGP2,alpha=0, nfolds=10, lambda = grid)
   best.s2 = ridge.kfold_2$lambda.min
   Lambda_2 = Lambda_2 + (1/R)*best.s2
-  
+
   # DGP 1 (2 signal variables)
   # Model 2: 50 regressors
-  
+
   ridge.fit_3 = glmnet(X[,1:50],y_DGP1, alpha = 0, lambda = grid)
   Result_ridge_3 = Result_ridge_3 + (1/R)*coef(ridge.fit_3)[2:51,]
-  
-  ridge.kfold_3 = cv.glmnet(X[,1:50],y_DGP1,alpha=0, nfolds=10, lambda = grid)  
+
+  ridge.kfold_3 = cv.glmnet(X[,1:50],y_DGP1,alpha=0, nfolds=10, lambda = grid)
   best.s3 = ridge.kfold_3$lambda.min
   Lambda_3 = Lambda_3 + (1/R)*best.s3
-  
+
   # DGP 2 (20 signal variables)
   # Model 2: 50 regressors
-  
+
   ridge.fit_4 = glmnet(X[,1:50],y_DGP2, alpha = 0, lambda = grid)
   Result_ridge_4 = Result_ridge_4 + (1/R)*coef(ridge.fit_4)[2:51,]
-  
-  ridge.kfold_4 = cv.glmnet(X[,1:50],y_DGP2,alpha=0, nfolds=10, lambda = grid)  
+
+  ridge.kfold_4 = cv.glmnet(X[,1:50],y_DGP2,alpha=0, nfolds=10, lambda = grid)
   best.s4 = ridge.kfold_4$lambda.min
   Lambda_4 = Lambda_4 + (1/R)*best.s4
-}  
+}
 
 #------------
 #   plot
 #------------
-
+quartz()
 par(mfrow=c(2,2))
 
 
@@ -157,3 +157,4 @@ for (j in 21:50) {
 }
 abline(v = Lambda_4, lty=2)
 legend("bottomright",legend = c("Signal variables","Noise variables", paste("Averaged Optimal Lambda = ", Lambda_4)),lty=c(1,1,2),col = c("red","black","black"), cex=0.9)
+
