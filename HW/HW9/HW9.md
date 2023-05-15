@@ -20,8 +20,6 @@ True, since we only add predictor to our model in each step and do not eliminate
 
 True, since we have to eliminate a predictor from `k+1` predictor model to get `k` predictor model.
 
-
-
 ## 2.
 
 Let $Q(\beta_R) = (y-X\beta_R)'(y-X\beta_R)-\lambda \beta_R'\beta_R$
@@ -46,5 +44,3 @@ No, as $\lambda \to \infty$, $\beta_{\forall j \neq 0} \to 0$ except the interce
 ### (b)
 
 No, none of them should be necessary identical, there might be a coinicidence for which some of them are identical but not guaranteed.
-
-
