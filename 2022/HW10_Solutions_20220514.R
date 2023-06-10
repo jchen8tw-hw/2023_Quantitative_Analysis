@@ -20,7 +20,7 @@ plot(tree.boston)
 text(tree.boston,pretty=0)
 
 set.seed(1)
-cv.boston=cv.tree(tree.boston, K=100) 
+cv.boston=cv.tree(tree.boston, K=100)
 cv.boston
 plot(cv.boston$size,cv.boston$dev,type='b') # Here we see that the most complex tree is chosen, which has 9 terminal nodes. So the original tree is already optimal.
 
@@ -45,7 +45,7 @@ m2 = which.min(boost.boston2$cv.error)
 m3 = which.min(boost.boston3$cv.error)
 m4 = which.min(boost.boston4$cv.error)
 
-# The optimal tree for m=1 is : 
+# The optimal tree for m=1 is :
 m1
 
 # The optimal tree for m=2 is :
@@ -76,24 +76,24 @@ boost.boston4$cv.error[m4]
 rm(list=ls(all=T))
 
 High=as.factor(ifelse(Boston$medv<=22,"No","Yes"))
-Boston=data.frame(Boston,High) 
+Boston=data.frame(Boston,High)
 
 #####
 # a #
 #####
 
-tree.boston=tree(High~.-medv,Boston, split = "gini") 
+tree.boston=tree(High~.-medv,Boston, split = "gini")
 
-plot(tree.boston, type = "uniform") 
+plot(tree.boston, type = "uniform")
 text(tree.boston,pretty=0)
 
 ## Tree pruning
 set.seed(1)
-cv.boston=cv.tree(tree.boston, FUN=prune.misclass ,K = 100) 
+cv.boston=cv.tree(tree.boston, FUN=prune.misclass ,K = 100)
 
 cv.boston
-plot(cv.boston) 
-plot(cv.boston$size,cv.boston$dev,type='b') 
+plot(cv.boston)
+plot(cv.boston$size,cv.boston$dev,type='b')
 # Here we can see that the optimal tree has "5" terminal nodes.
 
 
@@ -117,10 +117,11 @@ bag.boston$err.rate[,1] # These are the OOB error of bagging for each given numb
 rf.boston$err.rate[,1] # These are the OOB error of random forest for each given number of trees.
 
 
-plot(rf.boston$err.rate[,1], type = "l", xlab = "Number of Trees", ylab = "OOB error", cex.lab = 1.2, col="red") 
+plot(rf.boston$err.rate[,1], type = "l", xlab = "Number of Trees", ylab = "OOB error", cex.lab = 1.2, col="red")
 a =length(bag.boston$err.rate[,1])
-lines(seq(from = 1,to = a, length =a), bag.boston$err.rate[,1], col = "blue") 
+lines(seq(from = 1,to = a, length =a), bag.boston$err.rate[,1], col = "blue")
 legend("topright",legend = c("Bagging", "Random Forest"),col = c("blue", "red"), lty = c(1, 1))
+
 
 
 
